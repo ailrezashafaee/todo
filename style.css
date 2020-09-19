@@ -18,6 +18,12 @@
     margin-bottom: 10px;
     padding:0px 10px;
 }   
+#btn-bar a{
+    color: rgb(108, 219, 191);;
+}
+#btn-bar a:hover{
+    text-decoration: none;
+}
 #btn-bar:hover, #setting:hover{
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.178);
@@ -34,25 +40,29 @@
     padding: 0px 10px;
     margin-bottom: 10px;
 }
-#aside{
-    width: 300px;
+#mainplace{
     position: fixed;
+    display: flex;
+    margin-top: 50px;
+    width: 100%;
+}
+#aside{
+    transition: margin-left 0.5s;
+    width: 300px;
     z-index: 0;
     background-color: rgba(45, 50, 54, 0.801);
     height: 100vh;
-    
 }
 body{
     background: rgba(231, 240, 240, 0.514);
     background-repeat: no-repeat;
     background-size: cover;
 }
-#todays{
-    
+#todays{    
     color: white;
-    position: absolute;
-    margin-top: 80px;
+    margin-top: 30px;
     font-size: 22px;
+    margin-right: 20px;
     font-family: 'Kumbh Sans', sans-serif;
 }
 #today,#tomorrow{   
@@ -76,7 +86,6 @@ hr{
     background-color: slategray;
 }
 #projects{
-    margin-left: 30px;
     text-align: left;
 }
 #projects h3{
@@ -94,7 +103,6 @@ hr{
     transition: 0.5;
 }
 #proj-list{
-    position: relative;
     list-style: none;
     max-height: 300px;
     overflow-y: scroll; 
@@ -112,7 +120,7 @@ hr{
     border: none;
 }
 #icons-proj-btn  i{
-    font-size: 23px;
+    font-size: 19px;
 }
 #temp-proj{
     padding: 4px ;
@@ -152,9 +160,33 @@ hr{
 }
 #main{
     height: 100vh;
-    width:auto;
+    position: relative;
+    width: 100%;
+    transition: margin-left .5s;
 }
 #proj-root{
-    margin-left: 300px;
-    width: 400px;
+    font-family: 'Kumbh Sans', sans-serif;
+    margin: 10px auto;
+    position: relative;
+    width: 880px;
+}
+#proj-root h2{
+    font-size:25px;
+    font-weight: bold;
+    padding : 10px 0px;
+    width: 300px;
+}
+#proj-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#proj-btn-title{
+    padding: 3px;
+    margin-right: 30px;
+}
+#proj-btn-title button{
+    font-size: 23px;
+    padding: 0px;
+    font-weight: normal;
 }

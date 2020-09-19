@@ -1,6 +1,19 @@
 // know we want to do this fucking java script stuff know
 $(function(){
-
+    //header handeling : 
+    //toggle button : 
+    let toggleHandelerSideBar = "off";
+    $("#btn-bar").on("click", function()
+    {  
+        if(toggleHandelerSideBar === "off")
+        {
+            $("#aside").css("margin-left" , "-300px");
+            toggleHandelerSideBar = "on";
+        }else{
+            $("#aside").css("margin-left", "0px");
+            toggleHandelerSideBar = "off";
+        }
+    });
     //project handeling : 
     let numberOfProjects = 1;
     $("#add-new-proj").on("click",function(){ 
