@@ -1,0 +1,160 @@
+#header{
+    position: fixed;
+    color: rgb(108, 219, 191);
+    background-color: rgb(45, 50, 54);
+    height: 50px;  
+    width: 100%; 
+    font-weight: bold;
+    z-index: 1;
+}
+#header nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#btn-bar{
+    font-size: 25px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding:0px 10px;
+}   
+#btn-bar:hover, #setting:hover{
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.178);
+}
+#logo{
+    width: 200px;
+}
+#logo h1{
+    font-family:'Lobster', cursive;;
+}
+#setting{
+    font-size: 25px;
+    margin-right: 20px;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+}
+#aside{
+    width: 300px;
+    position: fixed;
+    z-index: 0;
+    background-color: rgba(45, 50, 54, 0.801);
+    height: 100vh;
+    
+}
+body{
+    background: rgba(231, 240, 240, 0.514);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#todays{
+    
+    color: white;
+    position: absolute;
+    margin-top: 80px;
+    font-size: 22px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+#today,#tomorrow{   
+    width: 200px;
+    padding-left:10px;
+}
+#today i{
+    color: rgb(108, 219, 191);
+}
+#tomorrow i{
+    color: rgb(108, 219, 191);
+}
+#today:hover , #tomorrow:hover{
+    background-color: rgba(255, 255, 255, 0.253);
+    border-radius: 4px;
+}
+#wierd{
+    margin-left: 30px;
+}
+hr{
+    background-color: slategray;
+}
+#projects{
+    margin-left: 30px;
+    text-align: left;
+}
+#projects h3{
+    margin-left: 30px;
+}
+#add-new-proj{
+    background-color: rgb(108, 219, 191);
+    padding: 5px;
+    border-radius: 0px;
+    width: 100%;
+    transition: 0.5;
+}
+#add-new-proj:hover{
+    background-color: rgba(108, 219, 191, 0.808);
+    transition: 0.5;
+}
+#proj-list{
+    position: relative;
+    list-style: none;
+    max-height: 300px;
+    overflow-y: scroll; 
+    background-color: rgb(45, 50, 54);
+    font-size:15px;
+    color: white;
+    border-radius: 0px;
+    width: 250px;
+}
+#proj-list li{
+    margin:3px 10px;
+    border-bottom: 1px solid rgb(108, 219, 191);
+}
+#proj-list li:last-child{
+    border: none;
+}
+#icons-proj-btn  i{
+    font-size: 23px;
+}
+#temp-proj{
+    padding: 4px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+}
+.disable{
+    display: none;
+}
+#temp-proj input{
+    background:none;
+    border-bottom: 1px rgb(108, 219, 191) solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: white;
+    width: 140px;
+}
+#temp-proj a{
+    color: white;
+    text-decoration:none;
+}
+#temp-proj a:hover{
+    text-decoration: none;
+}
+#delete-proj:hover, #reject-edit:hover{
+    color: red;
+}
+#edit-proj:hover,#accept-edit:hover{
+    color: green;
+}
+.proj-btn-xs{
+    padding: 3px;
+    color: white;
+}
+#main{
+    height: 100vh;
+    width:auto;
+}
+#proj-root{
+    margin-left: 300px;
+    width: 400px;
+}
