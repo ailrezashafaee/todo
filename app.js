@@ -15,9 +15,14 @@ $(function(){
         }
     });
     //project handeling : 
+    
     let numberOfProjects = 1;
     $("#add-new-proj").on("click",function(){ 
         numberOfProjects++;
+        if(numberOfProjects >=5)
+        {
+            $("#proj-list::-webkit-scrollbar").css("display","inline");
+        }
         $(this).hide();
         $("#proj-list").append(
         `<li >
@@ -33,6 +38,7 @@ $(function(){
                             </div>        
                         </li>`)
         let lastChild = $("#proj-list").children("li:last");
+
     });
     $("body").on("click","#accept-edit",function(){
         if($(this).parent().siblings("input").val())

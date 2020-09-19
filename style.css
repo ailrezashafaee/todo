@@ -54,7 +54,7 @@
     height: 100vh;
 }
 body{
-    background: rgba(231, 240, 240, 0.514);
+    background: rgba(231, 240, 240, 0.26);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -102,16 +102,34 @@ hr{
     background-color: rgba(108, 219, 191, 0.808);
     transition: 0.5;
 }
+/*styling slider of projects : */
+
 #proj-list{
     list-style: none;
     max-height: 300px;
     overflow-y: scroll; 
-    background-color: rgb(45, 50, 54);
+    background-color: rgba(45, 50, 54, 0);
     font-size:15px;
     color: white;
     border-radius: 0px;
     width: 250px;
 }
+#proj-list::-webkit-scrollbar {
+    width: 5px;
+    height: 40px;
+  }
+#proj-list::-webkit-scrollbar-track {
+    box-shadow:  0 0 3px rgba(49, 55, 59, 0.801); 
+    background-color:rgb(45, 50, 54);
+    border-radius: 10px;
+}
+#proj-list::-webkit-scrollbar-thumb{
+    background: rgba(108, 219, 191, 0.808); 
+    border-radius: 10px;
+}
+#proj-list::-webkit-scrollbar-thumb:hover {
+    background:  rgba(108, 219, 191, 0.459);
+  }
 #proj-list li{
     margin:3px 10px;
     border-bottom: 1px solid rgb(108, 219, 191);
