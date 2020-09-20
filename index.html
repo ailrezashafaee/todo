@@ -73,8 +73,8 @@
                         <!--this will be the place for more ... -->
                     </div>
                     <div id="task-projs">
-                        <div id="tasks">
-                            <ul>
+                        <div id="tasks-list">
+                            <ul class="list-group">
                                 <!--template for a task : -->
                                 <li>
                                     <div id="task">
@@ -92,17 +92,29 @@
                             </ul>
                         </div>
                         <div id="add-tast">
-                            <div id="add-tast">
-                                <div class="disable" id="new-task">
-                                    <input type="text" id="new-task-input">
-                                    <div id="add-tast-btns">    
-                                        <button class="btn"><i class="las la-project-diagram">Project</i></button><!--this will be on left side only-->
-                                        <button class="btn"><i class="las la-calendar-day"></i></button>
-                                        <button class="btn"><i class="las la-thermometer-half"></i></button><!--my idea is use tempruture for this -->
+                            <div class="card disable" id="add-task">
+                                <div id="new-task">
+                                    <input type="text" placeholder="im gonna do ..." id="new-task-input">
+                                    <div id="add-tast-btns">   
+                                        <div>
+                                            <button class="btn" id="task-schedule-btn"><i class="las la-calendar-day"></i>Schedule</button>
+                                            <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button><!--this will be on left side only-->
+                                        </div> 
+                                        <div>    
+                                            <button class="btn"><i class="las la-thermometer-half"></i></button><!--my idea is use tempruture for this -->
+                                            <button class="btn"><i class="las la-tag"></i></button>
+                                        </div>
                                     </div>
-                                </div>  
-                                <button id="add-tast" class="btn"><i class="las la-plus"></i></button>
-                                <lable for="add-tast">Add tast</lable>
+                                </div>
+                            </div>
+                              
+                            <div id="add-task-1" class="">    
+                                <button id="add-task-1-btn" class="btn"><i class="las la-plus"></i></button>
+                                <lable for="add-task-1-btn">Add tast</lable>
+                            </div>
+                            <div id="add-task-2" class="disable"> 
+                                <button id="add-task-2-btn" class="btn">Add Task</button>
+                                <button id="cancel-add-task-btn" class="btn">Cancel</button>
                             </div>
                         </div>
                     </div>

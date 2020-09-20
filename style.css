@@ -60,14 +60,14 @@ body{
 }
 #todays{    
     color: white;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 22px;
-    margin-right: 20px;
     font-family: 'Kumbh Sans', sans-serif;
 }
 #today,#tomorrow{   
     width: 200px;
     padding-left:10px;
+    margin: 0px 20px;
 }
 #today i{
     color: rgb(108, 219, 191);
@@ -78,9 +78,6 @@ body{
 #today:hover , #tomorrow:hover{
     background-color: rgba(255, 255, 255, 0.253);
     border-radius: 4px;
-}
-#wierd{
-    margin-left: 30px;
 }
 hr{
     background-color: slategray;
@@ -94,6 +91,8 @@ hr{
 #add-new-proj{
     background-color: rgb(108, 219, 191);
     padding: 5px;
+    color: rgb(45, 50, 54);
+    font-weight: bold;
     border-radius: 0px;
     width: 100%;
     transition: 0.5;
@@ -198,6 +197,7 @@ hr{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 #proj-btn-title{
     padding: 3px;
@@ -207,4 +207,105 @@ hr{
     font-size: 23px;
     padding: 0px;
     font-weight: normal;
+    color: rgba(0, 0, 0, 0.603);
+}
+.btn{
+    margin: 0px;
+    padding: 0px;
+}
+#tasks-list ul
+{
+    list-style: none;
+}
+#tasks-list li{
+    border-bottom: 1px rgba(12, 12, 12, 0.123) solid;
+    margin-bottom: 10px;
+}
+#task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#task-inf {
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+}
+#task-inf p{
+    margin: auto 0px;
+}
+#task-inf button{
+    font-size: 25px;
+    padding: 0px 10px 0px 0px;
+    color: rgba(0, 0, 0, 0.404);
+}
+#task-btn{
+    margin-right: 20px;
+}
+#task-btn button{
+    visibility: hidden;/*we will show after hover on it*/
+    font-size: 20px;
+    padding: 0px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.603);
+}
+#add-tast{
+    width: 100%;   
+}
+#add-task{
+    width: 100%;
+}
+#new-task{
+    width: 100%;
+    position: relative;
+}
+#new-task input{
+    width: 80%;
+    border: none;
+    width: 100%;
+    background:none;
+    position: relative;
+    padding: 10px;
+}
+#new-task-input:focus{
+    border: none;
+    outline: none;
+}
+.card{
+    background: none;
+}
+#add-tast-btns{
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+#project-choos-btn, #task-schedule-btn{
+    font-family: 'Kumbh Sans', sans-serif;
+    padding:5px 10px;
+    border: solid 1px rgba(15, 15, 15, 0.151);
+}
+.la-project-diagram , .la-calendar-day{
+    color: rgba(15, 15, 15, 0.527);
+    font-size: 20px;
+    margin: auto 0px;
+}
+.la-tag , .la-thermometer-half{
+    color: rgba(15, 15, 15, 0.527);
+    font-size: 25px;
+    margin: auto 0px;   
+}
+#add-task-2{
+    margin-top: 10px;
+}
+#add-task-2-btn{
+    background-color: rgb(108, 219, 191);
+    padding:5px 10px;
+    color: rgb(45, 50, 54);
+    font-weight: bold;
+}
+#cancel-add-task-btn{
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 15px;
 }
