@@ -116,11 +116,14 @@ hr{
 #proj-list::-webkit-scrollbar {
     width: 5px;
     height: 40px;
-  }
+}
+.proj-list-active { 
+    background-color: rgb(45, 50, 54);
+}
 #proj-list::-webkit-scrollbar-track {
     box-shadow:  0 0 3px rgba(49, 55, 59, 0.801); 
     background-color:rgb(45, 50, 54);
-    border-radius: 10px;
+    border-radius: 0px;
 }
 #proj-list::-webkit-scrollbar-thumb{
     background: rgba(108, 219, 191, 0.808); 
@@ -130,8 +133,11 @@ hr{
     background:  rgba(108, 219, 191, 0.459);
   }
 #proj-list li{
-    margin:3px 10px;
     border-bottom: 1px solid rgb(108, 219, 191);
+    cursor: pointer;
+}
+#proj-list li:hover{
+    background-color: rgb(45, 50, 54);
 }
 #proj-list li:last-child{
     border: none;
@@ -181,13 +187,12 @@ hr{
     width: 100%;
     transition: margin-left .5s;
 }
-#proj-root{
+.proj-root{
     font-family: 'Kumbh Sans', sans-serif;
     margin: 10px auto;
     position: relative;
     width: 880px;
-}
-#proj-root h2{
+}.proj-root h2{
     font-size:25px;
     font-weight: bold;
     padding : 10px 0px;
