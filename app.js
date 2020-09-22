@@ -64,8 +64,10 @@ $(function(){
     //project handeling : 
     
     let numberOfProjects = 1;
+    let idOfProj = 1;
     $("#add-new-proj").on("click",function(){ 
         numberOfProjects++;
+        idOfProj++;
         if(numberOfProjects >=5)
         {
             $("#proj-list::-webkit-scrollbar").css("display","inline");
@@ -74,7 +76,7 @@ $(function(){
         $("#proj-list").append(
         `<li >
                             <div id="temp-proj">
-                                <a data-target="${numberOfProjects}" class="disable">Project ${numberOfProjects}</a>
+                                <a data-target="${idOfProj}" class="disable">Project ${numberOfProjects}</a>
                                 <input maxlength="20" type="text" placeholder="project${numberOfProjects}" class="" name="proj">
                                 <div id="icons-proj-btn">    
                                     <button class="btn proj-btn-xs disable" id="edit-proj"><i class="las la-pen"></i></button>
@@ -86,7 +88,7 @@ $(function(){
                         </li>`)
         //adding a new div on main part
         $("#main").append(
-            `<div class="proj-root" id="${numberOfProjects}">
+            `<div class="proj-root" id="${idOfProj}">
             <div id="proj-title">    
                 <h2>project ${numberOfProjects}</h2>
                 <div id="proj-btn-title">
@@ -94,13 +96,11 @@ $(function(){
                     <button class="btn" id="delete-proj-title"><i class="las la-trash-alt"></i></button>
                     <button class="btn" id="more-proj-title"><i class="las la-ellipsis-h"></i></button>
                 </div>
-                <!--this will be the place for more ... -->
             </div>
             <div id="task-projs">
                 <div id="tasks-list">
-                    <ul class="list-group">
-                        <!--template for a task : -->
-                        <!--place to load the data of the task in it-->
+                    <ul class="list-group" id="list-of-tasks">
+                 
                     </ul>
                 </div>
                 <div id="add-tast">
@@ -110,16 +110,15 @@ $(function(){
                             <div id="add-tast-btns">   
                                 <div>
                                     <button class="btn" id="task-schedule-btn"><i class="las la-calendar-day"></i>Schedule</button>
-                                    <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button><!--this will be on left side only-->
+                                    <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button>
                                 </div> 
                                 <div>    
-                                    <button class="btn"><i class="las la-thermometer-half"></i></button><!--my idea is use tempruture for this -->
-                                    <button class="btn"><i class="las la-tag"></i></button>
+                                <button id="set-tempreture" class="btn"><i class="las la-thermometer-half"></i></button>
+                                <button id="set-tags" class="btn"><i class="las la-tag"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                      
                     <div id="add-task-1" class="">    
                         <button id="add-task-1-btn" class="btn"><i class="las la-plus"></i></button>
                         <lable for="add-task-1-btn">Add tast</lable>
@@ -133,7 +132,7 @@ $(function(){
         </div>`
         )
             // make the display of any other divs in main side : 
-        loadProject(numberOfProjects);
+        loadProject(idOfProj);
     });
     $("body").on("click","#accept-edit",function(){
         let val = $(this).parent().siblings("input").val()
@@ -166,6 +165,8 @@ $(function(){
     $("body").on("click" , "#delete-proj" , function(){
         numberOfProjects--;
         $(this).parents("li").remove();
+        let currentnum  = $(this).parent().siblings("a").attr("data-target");
+        $("main").find("#"+currentnum).remove();
     });
     $("body").on("click", "#temp-proj ", function(){
         $("#proj-list li").removeClass("proj-list-active");
@@ -189,5 +190,65 @@ $(function(){
         });
     }
     //end of project handleing 
-    
+    //add task : 
+    $("body").on("click", "#add-task-1" , function(){
+        console.log("fuck");
+        $(this).siblings("#add-task").removeClass("disable");
+        $(this).addClass("disable");
+        $(this).next().removeClass("disable");
+    });
+    $("body").on("click", "#add-task-2-btn", function(){
+        
+        let tasktext = $(this).parents("#add-tast").find("#new-task-input").val();
+        if(tasktext)
+        {
+            $(this).parents("#task-projs").find("#list-of-tasks").append(
+                `
+                <li>
+                    <div id="task">
+                        <div id="task-inf">
+                            <button class="btn" id="task-radio"><i class="las la-circle"></i></button>
+                            <!--<i class="las la-check-circle"></i> after clicked -->
+                            <p id="task-name">${tasktext}</p>
+                        </div>
+                        <div id="task-btn">
+                            <button class="btn" id="edit-task"><i class="las la-pen"></i></button>
+                            <!--scadule again and the sticky note button will be here-->
+                        </div>
+                    </div>
+                </li>
+                `
+            )
+            $(this).parents("#add-tast").find("#new-task-input").val("");
+        }else{
+            $(this).parents("#add-tast").find("#add-task").css("border-color" , "rgb(197, 61, 61)");
+        }
+    });
+    $("body").on("click" , "#cancel-add-task-btn", function(){
+        $(this).parent().addClass("disable");
+        $(this).parents("#add-tast").find("#add-task").addClass("disable");
+        $(this).parent().siblings("#add-task-1").removeClass("disable");
+    })
+    //styling project  : 
+    $("body").on("mouseenter","#add-task-1", function(){
+        $(this).find("i").css("background-color", "rgb(108, 219, 191)");
+        $(this).css("text-decoration", "underline");
+    });
+    $("body").on("mouseleave" , "#add-task-1" , function(){
+        $(this).find("i").css("background-color", "rgba(255, 255, 255, 0)");
+        $(this).css("text-decoration", "none");
+    })
+    $("body").on("mouseenter" , "#task-radio" , function(){
+        $(this).find("i").css("background-color" , "rgba(172, 172, 172, 0.199)");
+        $(this).find("i").removeClass("la-circle").addClass("la-check-circle");
+    })
+    $("body").on("mouseleave",  "#task-radio",function(){
+        $(this).find("i").addClass("la-circle").removeClass("la-check-circle").css("background-color","rgba(255, 255, 255, 0)");
+    });
+    $("body").on("focus","#new-task-input" ,function(){
+        $(this).parents("#add-task").css("border-color" , "rgb(108, 219, 191)");
+    });
+    $("body").on("focusout" , "#new-task-input" , function(){
+        $(this).parents("#add-task").css("border-color", "");
+    })
 });

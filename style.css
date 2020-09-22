@@ -181,6 +181,12 @@ hr{
     padding: 3px;
     color: white;
 }
+#task-radio{
+    font-weight: bold;
+}
+#task-radio i{
+    border-radius: 50%;
+}
 #main{
     height: 100vh;
     position: relative;
@@ -210,13 +216,28 @@ hr{
 }
 #proj-btn-title button{
     font-size: 23px;
+    
     padding: 0px;
     font-weight: normal;
     color: rgba(0, 0, 0, 0.603);
 }
+button:active{
+    border: none;
+    outline: none;
+}
 .btn{
     margin: 0px;
     padding: 0px;
+}
+.btn:active{
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+.btn:focus{
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 #tasks-list ul
 {
@@ -289,11 +310,13 @@ hr{
     font-family: 'Kumbh Sans', sans-serif;
     padding:5px 10px;
     border: solid 1px rgba(15, 15, 15, 0.151);
+    
 }
 .la-project-diagram , .la-calendar-day{
     color: rgba(15, 15, 15, 0.527);
     font-size: 20px;
     margin: auto 0px;
+    padding: 0px;
 }
 .la-tag , .la-thermometer-half{
     color: rgba(15, 15, 15, 0.527);
@@ -313,4 +336,39 @@ hr{
     margin-left: 5px;
     margin-top: 5px;
     font-size: 15px;
+}
+#add-task-1{
+    cursor: pointer;
+}
+#add-task-1  i{
+    font-size: 20px;
+    border-radius: 50%;
+}
+#add-task-2-btn:hover {
+    background-color: rgba(121, 240, 210, 0.753);;
+}
+#cancel-add-task-btn:hover{
+    text-decoration: underline;
+}
+.btn-disable{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+#task-btn button,#edit-proj-title i , #delete-proj-title i ,#more-proj-title i ,#task-schedule-btn i , #project-choos-btn i
+,#set-tempreture , #set-tags {
+    margin: auto;
+    transition: 0.2s;
+    border-radius: 3px;
+}
+
+#task-btn button:hover,#edit-proj-title i:hover , #delete-proj-title i:hover ,#more-proj-title i:hover ,
+ #task-schedule-btn:hover, #project-choos-btn:hover, #set-tempreture:hover , #set-tags:hover {
+    background-color: rgba(172, 172, 172, 0.199);
+}
+.proj-root{
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+.proj-root::-webkit-scrollbar{
+    visibility: hidden;
 }
