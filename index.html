@@ -61,58 +61,69 @@
                 </div>
             </aside>
             <main id="main">
-                <div class="proj-root" id="1">
-                    <div id="proj-title">    
-                        <h2>Project 1</h2>
-                        <div id="proj-btn-title">
-                            <button class="btn" id="edit-proj-title"><i class="las la-edit"></i></button>
-                            <button class="btn" id="delete-proj-title"><i class="las la-trash-alt"></i></button>
-                            <button class="btn" id="more-proj-title"><i class="las la-ellipsis-h"></i></button>
+                <div id="sl">
+                    <div class="proj-root" id="1">
+                        <div id="proj-title">    
+                            <h2>Project 1</h2>
+                            <div id="proj-btn-title">
+                                <button class="btn" id="edit-proj-title"><i class="las la-edit"></i></button>
+                                <button class="btn" id="delete-proj-title"><i class="las la-trash-alt"></i></button>
+                                <button class="btn" id="more-proj-title"><i class="las la-ellipsis-h"></i></button>
+                            </div>
+                            <!--this will be the place for more ... -->
                         </div>
-                        <!--this will be the place for more ... -->
-                    </div>
-                    <div id="task-projs">
-                        <div id="tasks-list">
-                            <ul class="list-group" id="list-of-tasks">
-                                <!--template for a task : -->
-                                <li>
-                                    <div id="task">
-                                        <div id="task-inf">
-                                            <button class="btn" id="task-radio"><i class="las la-circle"></i></button>
-                                            <!--<i class="las la-check-circle"></i> after clicked -->
-                                            <p id="task-name">i want fuck a girl</p>
+                        <div id="task-projs">
+                            <div id="tasks-list">
+                                <ul class="list-group" id="list-of-tasks">
+                                    <!--template for a task : -->
+                                    <li>
+                                        <div id="task">
+                                            <div id="task-inf">
+                                                <button class="btn" id="task-radio"><i class="las la-circle"></i></button>
+                                                <!--<i class="las la-check-circle"></i> after clicked -->
+                                                <p id="task-name">test task</p>
+                                            </div>
+                                            <div id="task-btn">
+                                                <button class="btn" id="edit-task"><i class="las la-pen"></i></button>
+                                                <!--scadule again and the sticky note button will be here-->
+                                            </div>
                                         </div>
-                                        <div id="task-btn">
-                                            <button class="btn" id="edit-task"><i class="las la-pen"></i></button>
-                                            <!--scadule again and the sticky note button will be here-->
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="add-tast">
-                            <div class="card disable" id="add-task">
-                                <div id="new-task">
-                                    <input type="text" placeholder="im gonna do ..." id="new-task-input">
-                                    <div id="add-tast-btns">   
-                                        <div>
-                                            <button class="btn" id="task-schedule-btn"><i class="las la-calendar-day"></i>Schedule</button>
-                                            <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button><!--this will be on left side only-->
-                                        </div> 
-                                        <div>    
-                                            <button id="set-tempreture" class="btn"><i class="las la-thermometer-half"></i></button><!--my idea is use tempruture for this -->
-                                            <button id="set-tags" class="btn"><i class="las la-tag"></i></button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="add-tast">
+                                <div class="card disable" id="add-task">
+                                    <div id="new-task">
+                                        <input type="text" placeholder="im gonna do ..." id="new-task-input">
+                                        <div id="add-tast-btns">   
+                                            <div>
+                                                <button class="btn" id="task-schedule-btn"><i class="las la-calendar-day"></i>Schedule</button>
+                                                <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button><!--this will be on left side only-->
+                                            </div> 
+                                            <div>    
+                                                <div class="dropdown">
+                                                    <button class="btn" type="button" id="set-tempreture" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="las la-thermometer-half"></i>  
+                                                    </button>
+                                                    <div style="padding:0px; margin: 0px;" class="dropdown-menu" aria-labelledby="set-tempreture">
+                                                        <div style="padding: 0px"><button class="btn" id="priority1" style="font-size: 30px;"><i class="las la-thermometer-full"></i></id></button></div>
+                                                        
+                                                    </div>
+                                                </div>
+                                               <!-- <button  class="btn"></button>my idea is use tempruture for this -->
+                                                <button id="set-tags" class="btn"><i class="las la-tag"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="add-task-1" class="">    
-                                <button id="add-task-1-btn" class="btn"><i class="las la-plus"></i></button>
-                                <lable for="add-task-1-btn">Add tast</lable>
-                            </div>
-                            <div id="add-task-2" class="disable"> 
-                                <button id="add-task-2-btn" class="btn">Add Task</button>
-                                <button id="cancel-add-task-btn" class="btn">Cancel</button>
+                                <div id="add-task-1" class="">    
+                                    <button id="add-task-1-btn" class="btn"><i class="las la-plus"></i></button>
+                                    <lable for="add-task-1-btn">Add tast</lable>
+                                </div>
+                                <div id="add-task-2" class="disable"> 
+                                    <button id="add-task-2-btn" class="btn">Add Task</button>
+                                    <button id="cancel-add-task-btn" class="btn">Cancel</button>
+                                </div>
                             </div>
                         </div>
                     </div>

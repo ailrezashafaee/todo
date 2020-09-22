@@ -87,7 +87,7 @@ $(function(){
                             </div>        
                         </li>`)
         //adding a new div on main part
-        $("#main").append(
+        $("#sl").append(
             `<div class="proj-root" id="${idOfProj}">
             <div id="proj-title">    
                 <h2>project ${numberOfProjects}</h2>

@@ -186,6 +186,7 @@ hr{
 }
 #task-radio i{
     border-radius: 50%;
+    transition: 0.5s;
 }
 #main{
     height: 100vh;
@@ -197,7 +198,7 @@ hr{
     font-family: 'Kumbh Sans', sans-serif;
     margin: 10px auto;
     position: relative;
-    width: 880px;
+    max-width: 880px;
 }.proj-root h2{
     font-size:25px;
     font-weight: bold;
@@ -365,10 +366,27 @@ button:active{
  #task-schedule-btn:hover, #project-choos-btn:hover, #set-tempreture:hover , #set-tags:hover {
     background-color: rgba(172, 172, 172, 0.199);
 }
-.proj-root{
+#sl{
     overflow-y: scroll;
-    max-height: 80vh;
+    overflow-x: hidden;
+    width: 100%;
+    max-height: 90vh;
 }
-.proj-root::-webkit-scrollbar{
-    visibility: hidden;
+#sl::-webkit-scrollbar {
+    width: 7px;
+}
+#sl::-webkit-scrollbar-track {
+    background: none; 
+}
+#sl::-webkit-scrollbar-thumb {
+    background:  rgb(45, 50, 54); 
+    box-shadow:  0 0 3px rgba(49, 55, 59, 0.801); 
+}
+#sl::-webkit-scrollbar-thumb:hover {
+    background: rgb(108, 219, 191);; 
+  } 
+.dropdown{
+    margin: 0px;
+    padding: 0px;
+    display: inline;
 }
