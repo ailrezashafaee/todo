@@ -113,7 +113,41 @@ $(function(){
                                     <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button>
                                 </div> 
                                 <div>    
-                                <button id="set-tempreture" class="btn"><i class="las la-thermometer-half"></i></button>
+                                <div class="dropdown">
+                                <div class="default-value" target-data="3"> 
+                                    <button class="btn" type="button" id="set-tempreture" title="prieorty 3">
+                                        <i class="las la-thermometer-half"></i>  
+                                    </button>
+                                </div>
+                                <div class="selets-div disactive">  
+                                    <ul>
+                                        <li id="option-priorty" val="1">
+                                            <div id="hot">
+                                                <i class="las la-thermometer-full"></i>
+                                                <p>prieorty 1&ThinSpace;</p> 
+                                            </div>
+                                        </li>
+                                        <li id="option-priorty" val="2">
+                                            <div id="warm">
+                                                <i class="las la-thermometer-three-quarters"></i>
+                                                <p>prieorty 2</p> 
+                                            </div>
+                                        </li>
+                                        <li id="option-priorty" val="3">
+                                            <div id="cool">
+                                                <i class="las la-thermometer-half"></i>
+                                                <p>prieorty 3</p> 
+                                            </div>
+                                        </li>
+                                        <li id="option-priorty" val="4">
+                                            <div id="cold">
+                                                <i class="las la-thermometer-quarter"></i>
+                                                <p>prieorty 4</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                                 <button id="set-tags" class="btn"><i class="las la-tag"></i></button>
                                 </div>
                             </div>
@@ -192,7 +226,6 @@ $(function(){
     //end of project handleing 
     //add task : 
     $("body").on("click", "#add-task-1" , function(){
-        console.log("fuck");
         $(this).siblings("#add-task").removeClass("disable");
         $(this).addClass("disable");
         $(this).next().removeClass("disable");
@@ -229,6 +262,27 @@ $(function(){
         $(this).parents("#add-tast").find("#add-task").addClass("disable");
         $(this).parent().siblings("#add-task-1").removeClass("disable");
     })
+    //tempruture stuffs : 
+    $("body").on("click" , "#set-tempreture" , function(){  
+    
+        $(this).parents().siblings(".selets-div").toggleClass("disactive");
+    });
+    $("body > *").on("click" , function(par)
+    {
+        if( par.target.className!=="las la-thermometer-half")
+        {
+            $("body").find(" .selets-div").addClass("disactive");
+        }
+    });
+    $("body").on("click" , "#option-priorty",function(){
+        $(this).parents(".dropdown").find(".default-value").attr("target-data", $(this).attr("val"));
+        $(this).parents(".dropdown").find(".default-value").find("i").removeClass();
+        let icontent = $(this).find("i").attr("class");
+        $(this).parents(".dropdown").find(".default-value").find("i").addClass(icontent)
+        .css("color" , $(this).find("i").css("color"));
+        $(this).parents(".dropdown").find(".default-value").attr("title", `prieorty ${$(this).attr("val")}`);
+    })
+    //date picker : 
     //styling project  : 
     $("body").on("mouseenter","#add-task-1", function(){
         $(this).find("i").css("background-color", "rgb(108, 219, 191)");
