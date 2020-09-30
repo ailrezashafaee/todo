@@ -1,14 +1,19 @@
 // know we want to do this fucking java script stuff know
 $(function(){
-    class task{
-        constructor(title ,date , tags , tempreture)
+    class Task{
+        constructor(title, id ,date , tags , tempreture)
         {
-            this.title = title
+            this.title = title;
+            this.id = id;
             this.date = date;
             this.tags = tags;
             this.tempreture = tempreture;
         }
         //getters & setters
+        get getId()
+        {return this.id}
+        set setId(id)
+        {this.id = id}
         get gettitle()
         {
             return this.title;
@@ -47,11 +52,44 @@ $(function(){
             this.tags.push(x);
         }
     }   
+    class Project{
+        constructor(name , id)
+        {
+            this.name = name;
+            this.id = id;
+        }
+        get getId()
+        {
+            return this.id;
+        }
+        get getName()
+        {
+            return this.name;
+        }
+        set setName(name)
+        {
+            this.name = name;
+        }
+        set setId(id)
+        {
+            this.id = id;
+        }
+        addTask(task)
+        {
+            this.tasks.push(task);
+        }
+        removeTaskByname(taskid)
+        {
+            this.tasks = this.tasks.filter(elem=>{
+                return (taskid !== elem.getId)
+            });
+        }
+    }
     //header handeling : 
     //toggle button : 
     let toggleHandelerSideBar = "off";
     $("#btn-bar").on("click", function()
-    {  
+    {
         if(toggleHandelerSideBar === "off")
         {
             $("#aside").css("margin-left" , "-300px");
@@ -61,17 +99,40 @@ $(function(){
             toggleHandelerSideBar = "off";
         }
     });
-    //project handeling : 
-    
+    //project handeling :
+    let firstproj = new Project("project 1", 1); 
+    let projects = [];
+    projects.push(firstproj);
+    const findProject = (id)=>{
+        for(let i =0 ; i <projects.length ; i++)
+        {
+            if((projects[i].getId) == id)
+            {
+                return projects[i];
+            }
+        }
+    }
+    const deleteProject = (id)=>{
+        for(let i =0 ; i <projects.length; i++)
+        {
+            if(projects[i].getId === id)
+            {
+                projects.splice(i-1 , 1);
+            }
+        }
+    }
     let numberOfProjects = 1;
     let idOfProj = 1;
+    let idOfTask = 1;
     $("#add-new-proj").on("click",function(){ 
         numberOfProjects++;
         idOfProj++;
+        let projTemp = new Project(`project ${idOfProj}`, idOfProj);
         if(numberOfProjects >=5)
         {
             $("#proj-list::-webkit-scrollbar").css("display","inline");
         }   
+        projects.push(projTemp);
         $(this).hide();
         $("#proj-list").append(
         `<li >
@@ -147,8 +208,7 @@ $(function(){
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
-                                <button id="set-tags" class="btn"><i class="las la-tag"></i></button>
+                            </div>  <button id="set-tags" class="btn" data-toggle="modal" data-target="#tagmodal"><i class="las la-tag"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -169,12 +229,14 @@ $(function(){
         loadProject(idOfProj);
     });
     $("body").on("click","#accept-edit",function(){
-        let val = $(this).parent().siblings("input").val()
+        let val = $(this).parent().siblings("input").val();
         if(val)
         {
             $(this).parent().siblings("a").text(val);
             let numberOfCurentProject = $(this).parent().siblings("a").attr("data-target");
             $("#main").find("#"+numberOfCurentProject).find("h2").text(val);
+            let proj = findProject(numberOfCurentProject);
+            proj.setName = val;
         }
         $("#add-new-proj").show("slow");
         $(this).parent().siblings("input").addClass("disable").siblings("a").removeClass("disable");
@@ -201,6 +263,7 @@ $(function(){
         $(this).parents("li").remove();
         let currentnum  = $(this).parent().siblings("a").attr("data-target");
         $("main").find("#"+currentnum).remove();
+        deleteProject(currentnum);
     });
     $("body").on("click", "#temp-proj ", function(){
         $("#proj-list li").removeClass("proj-list-active");
@@ -225,14 +288,22 @@ $(function(){
     }
     //end of project handleing 
     //add task : 
+    let tempTags= [];
+    let intempTags = [];
     $("body").on("click", "#add-task-1" , function(){
         $(this).siblings("#add-task").removeClass("disable");
         $(this).addClass("disable");
         $(this).next().removeClass("disable");
+        tempTags =[];
+        intempTags = [];
     });
     $("body").on("click", "#add-task-2-btn", function(){
-        
+        idOfTask++;
         let tasktext = $(this).parents("#add-tast").find("#new-task-input").val();
+        let prieorty = $("body").find(".default-value").attr("target-data");
+        let newTaskTemp = new Task(tasktext,idOfTask , "" ,tempTags, prieorty);
+        tempTags =[];
+        intempTags = [];
         if(tasktext)
         {
             $(this).parents("#task-projs").find("#list-of-tasks").append(
@@ -242,7 +313,7 @@ $(function(){
                         <div id="task-inf">
                             <button class="btn" id="task-radio"><i class="las la-circle"></i></button>
                             <!--<i class="las la-check-circle"></i> after clicked -->
-                            <p id="task-name">${tasktext}</p>
+                            <p id="task-name">${newTaskTemp.gettitle}</p>
                         </div>
                         <div id="task-btn">
                             <button class="btn" id="edit-task"><i class="las la-pen"></i></button>
@@ -281,7 +352,74 @@ $(function(){
         $(this).parents(".dropdown").find(".default-value").find("i").addClass(icontent)
         .css("color" , $(this).find("i").css("color"));
         $(this).parents(".dropdown").find(".default-value").attr("title", `prieorty ${$(this).attr("val")}`);
+    });
+    //add tags : 
+    $("body").on("click" , "#set-tags" , function(){
+        let htmdiv= "";
+        for(let i = 0 ; i<tempTags.length ;i++)
+        {
+           htmdiv+=`
+           <span>${tempTags[i]}
+           <button class="btn" id="close-tag-btn">
+                <i class="las la-times"></i>
+           </button>
+           </span>
+           `
+        }
+        $("body").find("#tags-before").html(
+                
+            )
     })
+    $("body").on("input" , "#tag-input"  , function(x)
+    {
+        let val = $(x.target).val();    
+        if(val[val.length-1] === ","  || val[val.length-1] === "/" || val[val.length-1] === ".")
+        {
+           let tag=  val.substr(0 , val.length -1 );
+           tag  = tag.split("");
+           tag = tag.filter((elem , index) =>{
+               if(elem === " ")
+               {
+                   let flag = 0;
+                   for(let i = index ; i < tag.length ;i++)
+                   {
+                       if(tag[i] !== " ")
+                       {
+                            return true;
+                       }
+                   }
+                   return false;
+               }else{
+                   return true;
+               }
+           });
+           tag = tag.map(elem=>{
+               if(elem === " ")
+               {
+                   return "_";
+               }else{
+                   return elem;
+               }
+           })
+           tag.unshift("@");
+           tag = tag.join("");
+           console.log(tag);
+           $(x.target).val("").parent().next().find("p").remove();
+           $(x.target).val("").parent().next().append(  
+               `<span>${tag}
+               <button class="btn" id="close-tag-btn">
+                    <i class="las la-times"></i>
+               </button>
+               </span>`
+           )
+           intempTags.push(tag);
+        };
+    });
+    // render the tags : 
+    
+    $("body").on("click" , "#save-tags" , function(){
+        tempTags = intempTags.slice(0);
+    });
     //date picker : 
     //styling project  : 
     $("body").on("mouseenter","#add-task-1", function(){
@@ -304,5 +442,9 @@ $(function(){
     });
     $("body").on("focusout" , "#new-task-input" , function(){
         $(this).parents("#add-task").css("border-color", "");
-    })
+    });
+
+    //diologs : 
+    
 });
+
