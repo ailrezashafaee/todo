@@ -6,43 +6,35 @@
         <meta  charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-
-        
     </head> 
     <body>
         <div class="modal fade" id="tagmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-dialog" id="containernote" role="document">
+            <div class="modal-content" >
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add tag</h5>
-                
+                <h6 class="modal-title" id="exampleModalLabel">Add Note</h6>
                 <button type="button" style="color: rgb(45, 50, 54);" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
-                    <p style="font-size: 14px;">seperate your tags with , or . or /</p>
-                    <div id="tag">
-                        <div id="tag-input">
-                            <input type="text" class="form-control" placeholder="add tag...">
-                        </div>
-                        <div id="tags-before">
-                            <p id="def-tags">there is no tag added yet</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="tagmodalfoot">
-                    <button type="button" id="close-modal-tag" class="btn" data-dismiss="modal">Close</button> 
-                    <button type="button" id="save-tags" class="btn" data-dismiss="modal">Add tags</button>
-                </div>
+                <div style="border-radius: 0;" class="modal-body">
+                    <textarea id="notearea">
+
+                    </textarea>
+                </div>  
             </div>
-            </div>
+        </div>
         </div>
         <header id="header">
             <nav>
@@ -110,15 +102,21 @@
                             <div id="tasks-list">
                                 <ul class="list-group" id="list-of-tasks">
                                     <!--template for a task : -->
-                                    <li>
+                                    <li id="task-li">
                                         <div id="task">
                                             <div id="task-inf">
                                                 <button class="btn" id="task-radio"><i class="las la-circle"></i></button>
                                                 <!--<i class="las la-check-circle"></i> after clicked -->
                                                 <p id="task-name">test task</p>
                                             </div>
-                                            <div id="task-btn">
+                                            <div id="task-btn" class="invisible">
                                                 <button class="btn" id="edit-task"><i class="las la-pen"></i></button>
+                                                <button class="btn" data-toggle="modal" data-target="#tagmodal" id="open-notes"><i class="las la-sticky-note"></i></button>
+                                                <p id="note-parag" class="disactive">some notes for test
+                                                </p>
+                                                <!--icon part-->
+                                                <div id="task-icons">   
+                                                </div>
                                                 <!--scadule again and the sticky note button will be here-->
                                             </div>
                                         </div>
@@ -128,12 +126,21 @@
                             <div id="add-tast">
                                 <div class="card disable" id="add-task">
                                     <div id="new-task">
-                                        <input type="text" placeholder="im gonna do ..." id="new-task-input">
+                                        <input type="text"  placeholder="im gonna do ..." id="new-task-input">
                                         <div id="add-tast-btns">   
                                             <div>
                                                 <button class="btn" id="task-schedule-btn"><i class="las la-calendar-day"></i>Schedule</button>
                                                 <!--datepicker-->
-                                                <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>Project</button><!--this will be on left side only-->
+                                                <div style="float: right; margin:0px 5px ;" class="dropdown">
+                                                    <div id="defalut-project" data-target="1">
+                                                        <button id="project-choos-btn" class="btn"><i class="las la-project-diagram"></i>project 1</button>
+                                                    </div>
+                                                    <div class="projmenuselector disactive" id="projmenu">
+                                                        <ul>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                               <!--this will be on left side only-->
                                             </div> 
                                             <div id="right-side-btn">    
                                                 <div class="dropdown">
@@ -172,7 +179,7 @@
                                                     </div>
                                                 </div>
                                                <!-- <button  class="btn"></button>my idea is use tempruture for this -->
-                                                <button id="set-tags" class="btn" data-toggle="modal" data-target="#tagmodal"><i class="las la-tag"></i></button>
+                                                <button id="set-tags" class="btn" data-toggle="modal" data-target="#tagmodal"><i class="las la-sticky-note"></i></button>
                                                 
                                             </div>
                                         </div>
